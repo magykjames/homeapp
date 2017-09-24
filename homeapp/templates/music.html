@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+  </head>
+  <body>
+      {% if musicfiles %}
+      {% for f in musicfiles %}
+      <h2>{{ f }}</h2>
+      <audio controls>
+      <source src="{{ url_for('static', filename='music/' + f) }}" type="audio/mpeg" name="{{ f }}">
+      </audio>
+      {% endfor %}
+      {% endif %}
+  </body>
+</html>

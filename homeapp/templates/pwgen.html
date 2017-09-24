@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='pwgen/pwgen.css') }}" media="screen" title="no title" charset="utf-8">
+  </head>
+  <body>
+    <form class="" action="{{ url_for('pwgen') }}" method="post">
+    <label for="length">Password Length?</label>
+        <input type="number" name="length" value="{{ length }}" min="6" style="width: 60px;">
+    <input type="submit" name="pwgen" value="Generate">
+    <br>
+    <label for="upperletters">Uppercase Letters</label>
+    <input id="upperletters" type="checkbox" name="upperletters" value="true">
+    <label for="lowerletters">Lowercase Letters</label>
+    <input id="lowerletters" type="checkbox" name="lowerletters" value="true">
+    <br>
+    <label for="numbers">Numbers</label>
+    <input id="numbers" type="checkbox" name="numbers" value="true">
+    <label for="special">Special Characters</label>
+    <input id="special" type="checkbox" name="special" value="true">
+    <div class="" id="pwddisplay">
+        {% if pwd %}
+        {{ pwd }}
+        {% endif %}
+      <p>
+        {{ summary }}
+      </p>
+    </div>
+    </form>
+  </body>
+  <script type="text/javascript">
+  bool = function(string) {
+  var bool;
+  bool = (function() {
+    switch (false) {
+      case string.toLowerCase() !== 'true':
+        return true;
+      case string.toLowerCase() !== 'false':
+        return false;
+    }
+  })();
+  if (typeof bool === "boolean") {
+    return bool;
+  }
+  return void 0;
+};
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var upperletterschecked = bool("{{ upperletters }}");
+    var lowerletterschecked = bool("{{ lowerletters }}");
+    var numberschecked = bool("{{ numbers }}");
+    var specialchecked = bool("{{ special }}");
+    console.log(upperletterschecked);
+    if (upperletterschecked) {
+      console.log('upper letters checked')
+    } else {
+      console.log('upper letters not checked')
+    };
+    document.getElementById("upperletters").checked = upperletterschecked;
+    document.getElementById("lowerletters").checked = lowerletterschecked;
+    document.getElementById("numbers").checked = numberschecked;
+    document.getElementById("special").checked = specialchecked;
+  });
+  </script>
+</html>
