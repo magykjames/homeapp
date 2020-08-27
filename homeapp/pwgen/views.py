@@ -14,6 +14,7 @@ def pwgen():
     lowerletters = True if request.form.get('lowerletters') else defchecked
     numbers = True if request.form.get('numbers') else defchecked
     special = True if request.form.get('special') else defchecked
+    safe = True if request.form.get('safespecial') else defchecked
     print upperletters, lowerletters, numbers, special
     summary = ('Passwords are guaranteed to have at least one uppercase, ' +
                'one lowercase, a number, and a special character. We will ' +
@@ -26,7 +27,7 @@ def pwgen():
             if length < 6:
                 length = 6
             pwd, summary = genrandom(
-                length, upperletters, lowerletters, numbers, special)
+                length, upperletters, lowerletters, numbers, special, safe)
     return render_template('pwgen.html',
                            pwd=pwd,
                            summary=summary,
@@ -34,4 +35,5 @@ def pwgen():
                            upperletters=upperletters,
                            lowerletters=lowerletters,
                            numbers=numbers,
-                           special=special)
+                           special=special,
+                           safe=safe)
