@@ -31,7 +31,7 @@ def genrandom(length=None,
         pwordchoices['2'] = lcl
     if numbers:
         pwordchoices['3'] = numl
-    if special:
+    if special or safe:
         pwordchoices['4'] = specl
 
     # If user didn't choose any sets, use them all!
