@@ -21,6 +21,8 @@
     <input id="numbers" type="checkbox" name="numbers" value="true">
     <label for="special">Special Characters</label>
     <input id="special" type="checkbox" name="special" value="true">
+    <label for="safe">Safe Special Characters</label>
+    <input id="safe" type="checkbox" name="safe" value="true"
     <div class="" id="pwddisplay">
         {% if pwd %}
         {{ pwd }}
@@ -52,6 +54,7 @@
     var lowerletterschecked = bool("{{ lowerletters }}");
     var numberschecked = bool("{{ numbers }}");
     var specialchecked = bool("{{ special }}");
+    var safechecked = bool('{{ safe }}');
     console.log(upperletterschecked);
     if (upperletterschecked) {
       console.log('upper letters checked')
@@ -62,6 +65,7 @@
     document.getElementById("lowerletters").checked = lowerletterschecked;
     document.getElementById("numbers").checked = numberschecked;
     document.getElementById("special").checked = specialchecked;
+    document.getElementById("safe").checked = safechecked;
   });
   </script>
 </html>
