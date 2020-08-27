@@ -10,12 +10,15 @@ def genrandom(length=None,
               upperletters=True,
               lowerletters=True,
               numbers=True,
-              special=True):
+              special=True,
+              safe=False):
     # Generate sets of character types to choose from.
     lcl = list(string.ascii_lowercase)
     ucl = list(string.ascii_uppercase)
     numl = list(range(0, 10))
-    specl = [chr(x) for x in range(33, 127)
+    specl = ['!', '@', '#', '$', '%', '^', '*', '(', ')']
+    if safe is False:
+        specl = [chr(x) for x in range(33, 127)
              if '\\' not in chr(x)
              and chr(x) not in [str(n) for n in numl]
              and chr(x) not in lcl and chr(x) not in ucl]
